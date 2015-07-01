@@ -76,6 +76,7 @@
 		<option value="Twitter">Twitter</option>
 		<option value="LinkedIn">LinkedIn</option>
 		<option value="Google+">Google+</option>
+		<option value="Google">Google</option>
 		<option value="YouTube">YouTube</option>
 		<option value="Newsletter">Newsletter</option>
 		<option value="Notification">Notification</option>
@@ -112,12 +113,14 @@
 					$("#utm_source").val('Newsletter');
 				}else if($(this).val() == "cpc"){
 					$("#utm_source option[value='Banners']").show();
+					$("#utm_source option[value='Google']").show();
 					$("#utm_source option[value='Facebook']").show();
 					$("#utm_source option[value='Twitter']").show();
 					$("#utm_source").val('Banners');
 				}else if($(this).val() == "cpa"){
 					$("#utm_source option[value='Banners']").show();
 					$("#utm_source option[value='Referral']").show();
+					$("#utm_source option[value='Google']").show();
 					$("#utm_source option[value='Facebook']").show();
 					$("#utm_source option[value='Twitter']").show();
 					$("#utm_source").val('Banners');
