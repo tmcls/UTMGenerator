@@ -60,7 +60,7 @@
 
 	<label for="utm_medium">Campaign Medium:</label>
 	<select name="utm_medium" id="utm_medium">
-		<option></option>
+		<option value=""></option>
 		<option value="Social">Social</option>
 		<option value="Email">Email</option>
 		<option value="cpc">cpc</option>
@@ -69,7 +69,7 @@
 
 	<label for="utm_source">Campaign Source:</label>
 	<select name="utm_source" id="utm_source">
-		<option></option>
+		<option value=""></option>
 		<option value="Banners">Banners</option>
 		<option value="Referral">Referral</option>
 		<option value="Facebook">Facebook</option>
@@ -99,6 +99,7 @@
 		$(function(){
 			$('#utm_medium').on('change', function(e){
 				$("#utm_source option").hide();
+				$("#utm_source option[value='']").show();
 
 				if($(this).val() == "Social"){
 					$("#utm_source option[value='Facebook']").show();
@@ -106,42 +107,49 @@
 					$("#utm_source option[value='Google+']").show();
 					$("#utm_source option[value='LinkedIn']").show();
 					$("#utm_source option[value='YouTube']").show();
-					$("#utm_source").val('Facebook');
 				} if($(this).val() == "Email"){
 					$("#utm_source option[value='Newsletter']").show();
 					$("#utm_source option[value='Notification']").show();
-					$("#utm_source").val('Newsletter');
 				}else if($(this).val() == "cpc"){
 					$("#utm_source option[value='Banners']").show();
 					$("#utm_source option[value='Google']").show();
 					$("#utm_source option[value='Facebook']").show();
 					$("#utm_source option[value='Twitter']").show();
-					$("#utm_source").val('Banners');
 				}else if($(this).val() == "cpa"){
 					$("#utm_source option[value='Banners']").show();
 					$("#utm_source option[value='Referral']").show();
 					$("#utm_source option[value='Google']").show();
 					$("#utm_source option[value='Facebook']").show();
 					$("#utm_source option[value='Twitter']").show();
-					$("#utm_source").val('Banners');
-				}else{
-					$("#utm_source").val('');
 				}
+
+				$("#utm_source").val('');
+
+				parse();
 			});
 
-			$('#utm_medium,#utm_source,#utm_campaign,#utm_url').on('change keyup', function(e){
-				console.log(e);
+
+			
+
+			$('#utm_medium,#utm_source,#utm_campaign,#utm_url').on('change keyup', parse);
+
+			$("#result").on("click", function(e){
+				$(this).select();
+			});
+
+			function parse(){
 				var utm_source 		= $('#utm_source').val().toLowerCase();
 				var utm_medium 		= $('#utm_medium').val().toLowerCase();
 				var utm_campaign 	= $('#utm_campaign').val().toLowerCase().replace(' ', '-');
 				var utm_url 		= 'https://'+$('#utm_url').val().toLowerCase().replace('http://', '').replace('https://', 'www.');
 
-				$("#result").val(utm_url+'?utm_source='+utm_source+'&utm_medium='+utm_medium+'&utm_campaign='+utm_campaign);
-			});
+				if(utm_source != '' && utm_medium != '' && utm_campaign != '' && utm_url != ''){
+					$("#result").val(utm_url+'?utm_source='+utm_source+'&utm_medium='+utm_medium+'&utm_campaign='+utm_campaign);
+				}else{
+					$("#result").val('');
+				}
+			}
 
-			$("#result").on("click", function(e){
-				$(this).select();
-			});
 		});
 	</script>
 
