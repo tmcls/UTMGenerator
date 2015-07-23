@@ -140,7 +140,7 @@
 			function parse(){
 				var utm_source 		= $('#utm_source').val().toLowerCase();
 				var utm_medium 		= $('#utm_medium').val().toLowerCase();
-				var utm_campaign 	= $('#utm_campaign').val().toLowerCase().replace(' ', '-');
+				var utm_campaign 	= $('#utm_campaign').val().toLowerCase().split(' ').join('-');;
 				var utm_url 		= 'https://'+$('#utm_url').val().toLowerCase().replace('http://', '').replace('https://', 'www.');
 
 				if(utm_source != '' && utm_medium != '' && utm_campaign != '' && utm_url != ''){
