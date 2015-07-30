@@ -11,7 +11,7 @@
 			width: 400px;
 			margin: 0 auto;
 			font-family: Helvetica;
-			padding: 50px 0;
+			padding: 50mopx 0;
 		}
 		input,
 		select,
@@ -138,8 +138,8 @@
 			});
 
 			function parse(){
-				var utm_source 		= $('#utm_source').val().toLowerCase();
-				var utm_medium 		= $('#utm_medium').val().toLowerCase();
+				var utm_source 		= $('#utm_source').val();
+				var utm_medium 		= $('#utm_medium').val();
 				var utm_campaign 	= $('#utm_campaign').val().toLowerCase().split(' ').join('-');;
 				var utm_url 		= 'https://'+$('#utm_url').val().toLowerCase().replace('http://', '').replace('https://', 'www.');
 
