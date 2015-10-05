@@ -53,6 +53,11 @@
 		#utm_source option {
 			display: none;
 		}
+
+		small {
+			font-weight: normal;
+			font-style: italic;
+		}
 	</style>
 
 </head>
@@ -63,6 +68,7 @@
 		<option value=""></option>
 		<option value="Social">Social</option>
 		<option value="Email">Email</option>
+		<option value="Offline">Offline</option>
 		<option value="cpc">cpc</option>
 		<option value="cpa">cpa</option>
 	</select>
@@ -80,18 +86,28 @@
 		<option value="YouTube">YouTube</option>
 		<option value="Newsletter">Newsletter</option>
 		<option value="Notification">Notification</option>
+		<option value="Invoice">Invoice</option>
 	</select>
 
-	<label for="utm_campaign">Campaign Name:</label>
-	<input type="text" name="utm_campaign" id="utm_campaign" placeholder="Roaming Promo 2015" />
+	<label for="utm_campaign">
+		Campaign Name: <br />
+		<small>(Always the same, as long as the campaign exists)</small>
+	</label>
+	<input type="text" name="utm_campaign" id="utm_campaign" placeholder="VikingLab Newsletter" />
 
+	<label for="utm_campaign">
+		Campaign Content:  <br />
+		<small>(If you do multiple communication rounds, define the difference)<br /> 
+			(This field is not required)</smal>
+	</label>
+	<input type="text" name="utm_content" id="utm_content" placeholder="september" />	
 
 	<label for="utm_url">Website URL:</label>
 	<input type="text" name="utm_url" id="utm_url" value="https://vikingco.com/en/" />
 
 
 	<label for="utm_url">The Magic Result:</label>
-	<textarea rows="5" id="result" name="result"></textarea>
+	<textarea  onClick="this.select();" rows="5" id="result" name="result"></textarea>
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -121,6 +137,8 @@
 					$("#utm_source option[value='Google']").show();
 					$("#utm_source option[value='Facebook']").show();
 					$("#utm_source option[value='Twitter']").show();
+				}else if($(this).val() == "Offline"){
+					$("#utm_source option[value='Invoice']").show();
 				}
 
 				$("#utm_source").val('');
@@ -131,7 +149,7 @@
 
 			
 
-			$('#utm_medium,#utm_source,#utm_campaign,#utm_url').on('change keyup', parse);
+			$('#utm_medium,#utm_source,#utm_campaign,#utm_content,#utm_url').on('change keyup', parse);
 
 			$("#result").on("click", function(e){
 				$(this).select();
@@ -140,10 +158,13 @@
 			function parse(){
 				var utm_source 		= $('#utm_source').val();
 				var utm_medium 		= $('#utm_medium').val();
-				var utm_campaign 	= $('#utm_campaign').val().toLowerCase().split(' ').join('-');;
-				var utm_url 		= 'https://'+$('#utm_url').val().toLowerCase().replace('http://', '').replace('https://', 'www.');
+				var utm_campaign 	= $('#utm_campaign').val().toLowerCase().split(' ').join('-');
+				var utm_content 	= $('#utm_content').val().toLowerCase().split(' ').join('-');
+				var utm_url 		= $('#utm_url').val().toLowerCase();
 
-				if(utm_source != '' && utm_medium != '' && utm_campaign != '' && utm_url != ''){
+				if(utm_source != '' && utm_medium != '' && utm_campaign != '' && utm_url != ''  && utm_content != ''){
+					$("#result").val(utm_url+'?utm_source='+utm_source+'&utm_medium='+utm_medium+'&utm_campaign='+utm_campaign+'&utm_content='+utm_content);
+				}else if(utm_source != '' && utm_medium != '' && utm_campaign != '' && utm_url != ''){
 					$("#result").val(utm_url+'?utm_source='+utm_source+'&utm_medium='+utm_medium+'&utm_campaign='+utm_campaign);
 				}else{
 					$("#result").val('');
