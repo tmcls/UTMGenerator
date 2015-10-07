@@ -66,9 +66,9 @@
 	<label for="utm_medium">Campaign Medium:</label>
 	<select name="utm_medium" id="utm_medium">
 		<option value=""></option>
-		<option value="Social">Social</option>
-		<option value="Email">Email</option>
-		<option value="Offline">Offline</option>
+		<option value="social">social</option>
+		<option value="email">email</option>
+		<option value="offline">offline</option>
 		<option value="cpc">cpc</option>
 		<option value="cpa">cpa</option>
 	</select>
@@ -76,17 +76,17 @@
 	<label for="utm_source">Campaign Source:</label>
 	<select name="utm_source" id="utm_source">
 		<option value=""></option>
-		<option value="Banners">Banners</option>
-		<option value="Referral">Referral</option>
-		<option value="Facebook">Facebook</option>
-		<option value="Twitter">Twitter</option>
-		<option value="LinkedIn">LinkedIn</option>
-		<option value="Google+">Google+</option>
-		<option value="Google">Google</option>
-		<option value="YouTube">YouTube</option>
-		<option value="Newsletter">Newsletter</option>
-		<option value="Notification">Notification</option>
-		<option value="Invoice">Invoice</option>
+		<option value="banners">banners</option>
+		<option value="referral">referral</option>
+		<option value="facebook">facebook</option>
+		<option value="twitter">twitter</option>
+		<option value="linkedIn">linkedIn</option>
+		<option value="google+">google+</option>
+		<option value="google">google</option>
+		<option value="youTube">youtube</option>
+		<option value="newsletter">newsletter</option>
+		<option value="notification">notification</option>
+		<option value="invoice">invoice</option>
 	</select>
 
 	<label for="utm_campaign">
@@ -117,28 +117,28 @@
 				$("#utm_source option").hide();
 				$("#utm_source option[value='']").show();
 
-				if($(this).val() == "Social"){
-					$("#utm_source option[value='Facebook']").show();
-					$("#utm_source option[value='Twitter']").show();
-					$("#utm_source option[value='Google+']").show();
-					$("#utm_source option[value='LinkedIn']").show();
-					$("#utm_source option[value='YouTube']").show();
-				} if($(this).val() == "Email"){
-					$("#utm_source option[value='Newsletter']").show();
-					$("#utm_source option[value='Notification']").show();
+				if($(this).val() == "social"){
+					$("#utm_source option[value='facebook']").show();
+					$("#utm_source option[value='twitter']").show();
+					$("#utm_source option[value='google+']").show();
+					$("#utm_source option[value='linkedIn']").show();
+					$("#utm_source option[value='youTube']").show();
+				} if($(this).val() == "email"){
+					$("#utm_source option[value='newsletter']").show();
+					$("#utm_source option[value='notification']").show();
 				}else if($(this).val() == "cpc"){
-					$("#utm_source option[value='Banners']").show();
-					$("#utm_source option[value='Google']").show();
-					$("#utm_source option[value='Facebook']").show();
-					$("#utm_source option[value='Twitter']").show();
+					$("#utm_source option[value='banners']").show();
+					$("#utm_source option[value='google']").show();
+					$("#utm_source option[value='facebook']").show();
+					$("#utm_source option[value='twitter']").show();
 				}else if($(this).val() == "cpa"){
-					$("#utm_source option[value='Banners']").show();
-					$("#utm_source option[value='Referral']").show();
-					$("#utm_source option[value='Google']").show();
-					$("#utm_source option[value='Facebook']").show();
-					$("#utm_source option[value='Twitter']").show();
-				}else if($(this).val() == "Offline"){
-					$("#utm_source option[value='Invoice']").show();
+					$("#utm_source option[value='banners']").show();
+					$("#utm_source option[value='referral']").show();
+					$("#utm_source option[value='google']").show();
+					$("#utm_source option[value='facebook']").show();
+					$("#utm_source option[value='twitter']").show();
+				}else if($(this).val() == "offline"){
+					$("#utm_source option[value='invoice']").show();
 				}
 
 				$("#utm_source").val('');
