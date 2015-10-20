@@ -71,6 +71,8 @@
 		<option value="offline">offline</option>
 		<option value="cpc">cpc</option>
 		<option value="cpa">cpa</option>
+		<option value="website">website</option>
+		<option value="sms">sms</option>
 	</select>
 
 	<label for="utm_source">Campaign Source:</label>
@@ -87,6 +89,8 @@
 		<option value="newsletter">newsletter</option>
 		<option value="notification">notification</option>
 		<option value="invoice">invoice</option>
+		<option value="external">external</option>
+		<option value="sms">sms</option>
 	</select>
 
 	<label for="utm_campaign">
@@ -137,6 +141,10 @@
 					$("#utm_source option[value='google']").show();
 					$("#utm_source option[value='facebook']").show();
 					$("#utm_source option[value='twitter']").show();
+				}else if($(this).val() == "website"){
+					$("#utm_source option[value='external']").show();
+				}else if($(this).val() == "sms"){
+					$("#utm_source option[value='sms']").show();
 				}else if($(this).val() == "offline"){
 					$("#utm_source option[value='invoice']").show();
 				}
